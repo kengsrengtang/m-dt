@@ -30,7 +30,7 @@ RSpec.describe ReservationsController, type: :controller do
 
       it 'return 200 status' do
         post :create, reservation: valid_payload
-        expect(response.status).to eq 200
+        expect(response.status).to eq 201
       end
 
       it 'return created reservation' do
