@@ -22,14 +22,29 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Home</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#modal_form">Contact</a></li>
       </ul>
       <div class="navbar-form navbar-right">
-        <a href="#reservations"class="btn btn-primary navbar-right">Reservation</a>
+        <% if user_signed_in? %>
+          <a href="#reservations"class="btn btn-primary navbar-right ">Reservation List</a>
+        <% else %>
+          <a href="#reservation_form"class="btn btn-primary navbar-right">Reservation</a>
+        <% end %>
       </div>
-    </div><!--/.nav-collapse -->
+
+
+          </div><!--/.nav-collapse -->
   </div>
   </nav>
+  <p class="navbar-text pull-right">
+  <% if user_signed_in? %>
+    Logged in as <strong><%= current_user.email %></strong>.
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+  <% else %>
+    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+  <% end %>
+
+
   <%= yield %>
   <hr>
   <div class="container">
