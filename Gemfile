@@ -37,6 +37,7 @@ gem 'react-rails', '~> 1.1'
 gem "twitter-bootstrap-rails"
 gem 'react-router-rails', '~>0.13.3.1'
 gem 'devise'
+gem 'rails_12factor', group: :production
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'factory_girl_rails'
@@ -54,4 +55,3 @@ group :development do
 
   gem 'pry'
 end
-
