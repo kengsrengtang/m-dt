@@ -25,15 +25,15 @@ class Admin::ReservationsController < ApplicationController
    end
 
   def create
-    #begin
+    begin
       reservation = Reservation.create! re_params
-      #UserMailer.welcome(reservation).deliver_now
+      UserMailer.welcome(reservation).deliver_now
       render json: reservation.to_json, status: :created
-    #rescue => e
-    #  Rails.logger.info e.backtrace
-    #  Rails.logger.info e.inspect
-    #  render json: {reasons: e.message}, status: 422
-    #end
+    rescue => e
+      Rails.logger.info e.backtrace
+      Rails.logger.info e.inspect
+      render json: {reasons: e.message}, status: 422
+    end
   end
 
   def update
@@ -41,7 +41,7 @@ class Admin::ReservationsController < ApplicationController
       reservation = Reservation.find_by_id(re_params[:id])
       if reservation
         reservation.update_attributes! re_params
-        #UserMailer.welcome(reservation).deliver_now
+        UserMailer.welcome(reservation).deliver_now
         render json: reservation.to_json, status: 200
       else
         render json: {reasons: "reservation doesn't exist"}, status: 404
