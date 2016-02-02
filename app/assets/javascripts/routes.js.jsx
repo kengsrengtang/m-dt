@@ -4,6 +4,8 @@ var Route = ReactRouter.Route,
 this.MyRoutes = (
     <Route>
     <DefaultRoute handler={home} />
-    <Route handler={Reservations} path='reservations'/>
+    <Route handler={ReservationForm} path='reservation_form' />
+    <Route handler={MainReservation} path='reservations' />
+    <Route handler={ApprovedMainReservation} path='a_reservations'/>
     </Route>
 );
